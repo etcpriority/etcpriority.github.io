@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Learning to Prioritize: A Novel Algorithm for Learning Event-Triggered Control in Decentralized Multi-Agent Systems">
+  <meta name="keywords" content="Mutiagent System, ETC">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning to Prioritize: A Novel Algorithm for Learning Event-Triggered Control in Decentralized Multi-Agent Systems</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      
+    </div>
+
+  </div> -->
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Learning to Prioritize: A Novel Algorithm for Learning Event-Triggered Control in Decentralized Multi-Agent Systems</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Qingyun Guo<sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://research.aalto.fi/en/persons/junyi-shi/publications/">Junyi Shi</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://research.aalto.fi/en/persons/tomasz-kucner/publications">Tomasz Piotr Kucner</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://research.aalto.fi/fi/persons/dominik-baumann/publications">Dominik Baumann</a><sup>1,2,3</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Aalto University,</span>
+            <span class="author-block"><sup>2</sup>Finnish Center for Artificial Intelligence</span>
+            <span class="author-block"><sup>3</sup>Uppsala University</span>
+          </div>
+
+          
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present a novel method capable of learning event-triggered control in decentralized multi-agent systems 
+            with communication priorities.
+          </p>
+          <p>
+            In multi-agent systems, effective communication between agents is essential for 
+            coordination and control, yet communication resources are often limited, posing 
+            challenges to maintaining system performance. Event-triggered control offers a 
+            solution by initiating communication only when necessary, thus reducing unnecessary 
+            data transmission. However, current multi-agent reinforcement learning algorithms 
+            for event-triggered control face two significant limitations. First, they rely on 
+            the centralized training and decentralized execution paradigm, which requires global 
+            information from periodic communication during training---a requirement that can often 
+            not be met in real-world applications. Second, these methods consider discrete, 
+            binary communication decisions. This adds complexity to the learning process as 
+            the action space is now hybrid: continuous control commands and discrete communication 
+            decisions. Further, binary communication decisions may still result in more agents 
+            communicating than the network bandwidth can support. In this paper, we propose a novel 
+            algorithm for learning event-triggered control that considers decentralized systems and 
+            uses only local observations and communicated information throughout the training and 
+            execution phases. Moreover, our algorithm simplifies the action space by allowing agents 
+            to jointly learn continuous control policies and communication priorities. We validate 
+            our method across various multi-agent learning tasks with communication interference, 
+            demonstrating its superiority over the baseline approach.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-left">Overview</h2>
+        <!-- Image to illustrate your method -->
+        <figure class="image is-4by3">
+          <img src="./static/images/system.png" alt="Description of the method" />
+          <figcaption class="has-text-centered">Figure: Our framework of priority-based ETC.</figcaption>
+        </figure>
+        <div class="content has-text-justified">
+          <p>
+            Our method jointly learns control policies and communication priorities using an 
+            independent proximal policy optimization algorithm. Agents exchange priorities 
+            over the wireless network to determine the communication policy, i.e., agents with
+            the highest priorities can send information over the network. As shown in the figure above,
+            a decentralized multi-agent system where each agent \(i\) learns the 
+            policy \(\pi(a_i | \Tilde{o}_i)\) based on local observations \(o_i\) and 
+            communicated observations \(\hat{o}\). Agent \(i\) exchanges the communication 
+            priority \(a_{i,\mathrm{p}}\) through a wireless network. Moreover, \(L\) agents 
+            with the highest priorities are allocated bandwidth and send crucial information
+             \(\hat{o}\) to other agents. Agent \(i\) executes the control action \(a_{i,\mathrm{c}}\) 
+             to interact with the environment, getting corresponding rewards and local observations, 
+             which feed back into the policy learning. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    
+    <h2 class="title is-3 has-text-left">Evaluation</h2>
+    <div class="content">
+      <p>
+        We evaluate our algorithm in multiwalker, coverage control and formation control environments.
+        We use independent proximal policy optimization with round-robin communication as the baseline, e.g,
+        it just needs to learn the control policy.
+      </p>
+      <p>
+        In multiwalker, bipedal robots (walkers) aim to transport a package from the left side 
+        to the right side of the terrain.
+      </p>
+      <p>
+        In coverage control, the goal is for agents to position themselves such that each landmark is within a certain distance of at least one agent.
+      </p>
+      <p>
+        In coverage control, the objective is for agents to form an M-sided regular polygon with the landmark at its center.
+      </p>
+    </div>
+    <div class="columns is-centered"></div>
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-4">Our algorithm in multiwalker with three agents</h2>
+          <video id="walker_3_p_t6e2" controls muted loop playsinline height="100%">
+            <source src="./static/videos/walker_3_p_t6e2.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            Under limited bandwidth conditions, the agents trained with our algorithm initially adopt a simplified policy, 
+            passing the package to the rightmost agent to minimize complex coordination, which would 
+            otherwise require more communication. The rightmost agent stabilizes the package by 
+            positioning itself at its center of mass, balancing it effectively—even performing 
+            jumps to maintain stability. Eventually, however, the package falls to the ground due 
+            to risky balancing and an unexpected terrain configuration not encountered 
+            in training. Overall, our method enables agents to transport packages over considerable 
+            distances, despite communication constraints.
+          </p>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-4">Baseline in multiwalker with three agents</h2>
+          <video id="walker_3_r_t20e6" controls muted loop playsinline height="100%">
+            <source src="./static/videos/walker_3_r_t20e6.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            With the baseline, the agents adopt a similar policy, that is, let as few agents as possible transport the package. However, 
+            around the midpoint, the middle agent approaches the rightmost one, aiming to 
+            transfer the package. Here, a slight misalignment occurs due to the lack of the important information, with the middle agent moving out 
+            of sync with the rightmost agent's reach. This desynchronization leads to the package 
+            slipping, resulting in it falling to the ground.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-4">Our algorithm in multiwalker with six agents</h2>
+          <video id="walker_6_p_t21e8" controls muted loop playsinline height="100%">
+            <source src="./static/videos/walker_6_p_t21e8.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            When the number of agents increases to six, the policy learned by our algorithm is 
+            to pass the package to the four agents on the right, who then transport it over a 
+            considerable distance. However, because the agents are so close together and lack 
+            sufficient communication, the leftmost agent eventually steps on the second agent 
+            from the left.
+          </p>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-4">Baseline in multiwalker with six agents</h2>
+          <video id="walker_r_6_t4e7" controls muted loop playsinline height="100%">
+            <source src="./static/videos/walker_r_6_t4e7.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            With six agents, the policy obtained from the baseline is still to let as few agents as 
+            possible transport the package. However, this approach introduces certain risks: 
+            some middle agents exhibit less effort during transfers and fail to recognize how 
+            their forward movement impacts the overall task. As a result, they end up tripping 
+            other agents, and the package does not travel very far.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-4">Our algorithm coverage conrtol with three agents</h2>
+          <video id="spread_p_3_t3e4" controls muted loop playsinline height="100%">
+            <source src="./static/videos/spread_p_3_t3e4.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            In coverage conrtol, our algorithm enables agents to quickly collaborate and 
+            cover the corresponding landmarks. In the final performance, two agents are nearly 
+            aligned with their respective landmarks, while one 
+            agent has a short distance away from its landmark.
+          </p>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-4">Baseline in coverage conrtol with three agents</h2>
+          <video id="spread_r_3_t2e4" controls muted loop playsinline height="100%">
+            <source src="./static/videos/spread_r_3_t2e4.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            The policy learned by the baseline lets the agents go to different landmarks at the initial stage, 
+            but in the middle, two of the agents have a conflict over who covers the top landmark 
+            and who covers the left landmark. In the end, none of the three agents can be fully 
+            aligned with landmarks.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-4">Our algorithm in formation conrtol with eight agents</h2>
+          <video id="render_for_8_p (2)" controls muted loop playsinline height="100%">
+            <source src="./static/videos/render_for_8_p (2).mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            In formation control, following the policy from our algorithm, the agents coordinate 
+            and eventually surround the landmark, forming an approximate regular polygon.
+          </p>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-4">Baseline in formation conrtol with eight agents</h2>
+          <video id="render_for_8_r" controls muted loop playsinline height="100%">
+            <source src="./static/videos/render_for_8_r.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            The policy from the baseline fails to allow the agents to be distributed in an 
+            desired manner around the landmark. Some agents place themselves in appropriate 
+            locations, while the remaining agents do not reach the corresponding locations.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Concurrent Work. -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
