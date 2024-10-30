@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="description"
         content="Learning to Prioritize: A Novel Algorithm for Learning Event-Triggered Control in Decentralized Multi-Agent Systems">
-  <meta name="keywords" content="Mutiagent System, ETC">
+  <meta name="keywords" content="Muti-Agent System, ETC">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Learning to Prioritize: A Novel Algorithm for Learning Event-Triggered Control in Decentralized Multi-Agent Systems</title>
 
@@ -44,29 +44,6 @@
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <!-- <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      
-    </div>
-
-  </div> -->
-</nav>
-
-
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
@@ -75,121 +52,119 @@
           <h1 class="title is-1 publication-title">Learning to Prioritize: A Novel Algorithm for Learning Event-Triggered Control in Decentralized Multi-Agent Systems</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              Qingyun Guo<sup>1</sup>
+              Qingyun Guo<sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://research.aalto.fi/en/persons/junyi-shi/publications/">Junyi Shi</a><sup>1</sup>,</span>
+              <a href="https://research.aalto.fi/en/persons/junyi-shi/publications/">Junyi Shi</a><sup>1</sup>,
+            </span>
             <span class="author-block">
               <a href="https://research.aalto.fi/en/persons/tomasz-kucner/publications">Tomasz Piotr Kucner</a><sup>1,2</sup>,
             </span>
             <span class="author-block">
-              <a href="https://research.aalto.fi/fi/persons/dominik-baumann/publications">Dominik Baumann</a><sup>1,2,3</sup>,
+              <a href="https://baumanndominik.github.io/">Dominik Baumann</a><sup>1,2,3</sup>,
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Aalto University,</span>
+            <span class="author-block"><sup>1</sup>Aalto University</span>
             <span class="author-block"><sup>2</sup>Finnish Center for Artificial Intelligence</span>
             <span class="author-block"><sup>3</sup>Uppsala University</span>
-          </div>
-
+          </div> 
           
-
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-
 
 
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            We present a novel method capable of learning event-triggered control in decentralized multi-agent systems 
-            with communication priorities.
-          </p>
-          <p>
-            In multi-agent systems, effective communication between agents is essential for 
-            coordination and control, yet communication resources are often limited, posing 
-            challenges to maintaining system performance. Event-triggered control offers a 
-            solution by initiating communication only when necessary, thus reducing unnecessary 
-            data transmission. However, current multi-agent reinforcement learning algorithms 
-            for event-triggered control face two significant limitations. First, they rely on 
-            the centralized training and decentralized execution paradigm, which requires global 
-            information from periodic communication during training---a requirement that can often 
-            not be met in real-world applications. Second, these methods consider discrete, 
-            binary communication decisions. This adds complexity to the learning process as 
-            the action space is now hybrid: continuous control commands and discrete communication 
-            decisions. Further, binary communication decisions may still result in more agents 
-            communicating than the network bandwidth can support. In this paper, we propose a novel 
-            algorithm for learning event-triggered control that considers decentralized systems and 
-            uses only local observations and communicated information throughout the training and 
-            execution phases. Moreover, our algorithm simplifies the action space by allowing agents 
-            to jointly learn continuous control policies and communication priorities. We validate 
-            our method across various multi-agent learning tasks with communication interference, 
-            demonstrating its superiority over the baseline approach.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <!-- <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div> -->
-    <!--/ Paper video. -->
-  </div>
-</section>
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-left">Overview</h2>
-        <!-- Image to illustrate your method -->
-        <figure class="image is-4by3">
-          <img src="./static/images/system.png" alt="Description of the method" />
-          <figcaption class="has-text-centered">Figure: Our framework of priority-based ETC.</figcaption>
-        </figure>
-        <div class="content has-text-justified">
-          <p>
-            Our method jointly learns control policies and communication priorities using an 
-            independent proximal policy optimization algorithm. Agents exchange priorities 
-            over the wireless network to determine the communication policy, i.e., agents with
-            the highest priorities can send information over the network. As shown in the figure above,
-            a decentralized multi-agent system where each agent \(i\) learns the 
-            policy \(\pi(a_i | \Tilde{o}_i)\) based on local observations \(o_i\) and 
-            communicated observations \(\hat{o}\). Agent \(i\) exchanges the communication 
-            priority \(a_{i,\mathrm{p}}\) through a wireless network. Moreover, \(L\) agents 
-            with the highest priorities are allocated bandwidth and send crucial information
-             \(\hat{o}\) to other agents. Agent \(i\) executes the control action \(a_{i,\mathrm{c}}\) 
-             to interact with the environment, getting corresponding rewards and local observations, 
-             which feed back into the policy learning. 
-          </p>
-        </div>
-      </div>
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content has-text-justified">
+      <p>
+        In multi-agent systems, effective communication between agents is essential for 
+        coordination and control, yet communication resources are often limited, posing 
+        challenges to maintaining system performance. Event-triggered control offers a 
+        solution by initiating communication only when necessary, thus reducing unnecessary 
+        data transmission.
+      </p>
+      <p>  
+        However, current multi-agent reinforcement learning algorithms 
+        for event-triggered control face two significant limitations. First, they rely on 
+        the centralized training and decentralized execution paradigm, which requires global 
+        information from periodic communication during training---a requirement that can often 
+        not be met in real-world applications. Second, these methods consider discrete, 
+        binary communication decisions. This adds complexity to the learning process as 
+        the action space is now hybrid: continuous control commands and discrete communication 
+        decisions. Further, binary communication decisions may still result in more agents 
+        communicating than the network bandwidth can support. 
+      </p>
+      <p> 
+        In this paper, we propose a novel algorithm for learning event-triggered control that considers decentralized systems and 
+        uses only local observations and communicated information throughout the training and 
+        execution phases. Moreover, our algorithm simplifies the action space by allowing agents 
+        to jointly learn continuous control policies and communication priorities. We validate 
+        our method across various multi-agent learning tasks with communication interference, 
+        demonstrating its superiority over the baseline approach.
+      </p>
     </div>
   </div>
 </section>
 
+
 <section class="section">
   <div class="container is-max-desktop">
+    <h2 class="title is-3">Overview</h2>
+    <!-- Image to illustrate your method -->
+    <figure class="image is-4by3">
+    <img src="./static/images/system.png" width="200" height="150" alt="Description of the method" />
+    <figcaption class="has-text-centered">Figure: Our framework of priority-based ETC.</figcaption>
+    </figure>
+    <div class="content has-text-justified">
+    <p>
+      Our method jointly learns control policies and communication priorities using an 
+      independent proximal policy optimization algorithm. Agents exchange priorities 
+      over the wireless network to determine the communication policy, i.e., agents with
+      the highest priorities can send information over the network. As shown in the figure above,
+      a decentralized multi-agent system where each agent \(i\) learns the 
+      policy \(\pi(a_i | o_i)\) based on local observations \(o_i\) and 
+      communicated observations \(\hat{o}\). Agent \(i\) exchanges the communication 
+      priority \(a_{i,\mathrm{p}}\) through a wireless network. Moreover, \(L\) agents 
+      with the highest priorities are allocated bandwidth and send crucial information
+      \(\hat{o}\) to other agents. Agent \(i\) executes the control action \(a_{i,\mathrm{c}}\) 
+      to interact with the environment, getting corresponding rewards and local observations, 
+      which feed back into the policy learning. 
+      </p>
+    </div>
+  </div>
+</section>
 
-    
+
+<section class="section">
+  <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-left">Evaluation</h2>
     <div class="content">
       <p>
