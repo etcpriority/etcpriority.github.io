@@ -139,24 +139,18 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3">Overview</h2>
     <!-- Image to illustrate your method -->
-    <figure class="image is-4by3">
-    <img src="./static/images/system.png" width="200" height="150" alt="Description of the method" />
-    <figcaption class="has-text-centered">Figure: Our framework of priority-based ETC.</figcaption>
-    </figure>
+    <div style="text-align: center; width: 500px;"> 
+      <img src="./static/images/system.png" style="margin: 0 auto;"  alt="Description of the method" />
+    </div>
     <div class="content has-text-justified">
     <p>
       Our method jointly learns control policies and communication priorities using an 
-      independent proximal policy optimization algorithm. Agents exchange priorities 
-      over the wireless network to determine the communication policy, i.e., agents with
-      the highest priorities can send information over the network. As shown in the figure above,
-      a decentralized multi-agent system where each agent \(i\) learns the 
-      policy \(\pi(a_i | o_i)\) based on local observations \(o_i\) and 
-      communicated observations \(\hat{o}\). Agent \(i\) exchanges the communication 
-      priority \(a_{i,\mathrm{p}}\) through a wireless network. Moreover, \(L\) agents 
-      with the highest priorities are allocated bandwidth and send crucial information
-      \(\hat{o}\) to other agents. Agent \(i\) executes the control action \(a_{i,\mathrm{c}}\) 
-      to interact with the environment, getting corresponding rewards and local observations, 
-      which feed back into the policy learning. 
+      independent proximal policy optimization algorithm. A decentralized multi-agent system where each agent \(i\) learns the policy \(\pi(a_i | o_i, \hat{o})\) 
+      based on local observations $o_i$ and communicated observations $\hat{o}$. 
+      Agent $i$ exchanges the communication priority $a_{i,\mathrm{p}}$ through a wireless network. 
+      Moreover, $L$ agents with the highest priorities are allocated bandwidth and send crucial information $\hat{o}$ to other agents. 
+      Agent $i$ executes the control action $a_{i,\mathrm{c}}$ to interact with the environment, getting corresponding rewards and local observations, 
+      which feed back into the policy learning.
       </p>
     </div>
   </div>
