@@ -146,10 +146,10 @@
     <p>
       Our method jointly learns control policies and communication priorities using an 
       independent proximal policy optimization algorithm. A decentralized multi-agent system where each agent \(i\) learns the policy \(\pi(a_i | o_i, \hat{o})\) 
-      based on local observations $o_i$ and communicated observations $\hat{o}$. 
-      Agent $i$ exchanges the communication priority $a_{i,\mathrm{p}}$ through a wireless network. 
-      Moreover, $L$ agents with the highest priorities are allocated bandwidth and send crucial information $\hat{o}$ to other agents. 
-      Agent $i$ executes the control action $a_{i,\mathrm{c}}$ to interact with the environment, getting corresponding rewards and local observations, 
+      based on local observations o_i and communicated observations \hat{o}. 
+      Agent i exchanges the communication priority a_{i,\mathrm{p}} through a wireless network. 
+      Moreover, L agents with the highest priorities are allocated bandwidth and send crucial information \hat{o} to other agents. 
+      Agent $i$ executes the control action a_{i,\mathrm{c}} to interact with the environment, getting corresponding rewards and local observations, 
       which feed back into the policy learning.
       </p>
     </div>
