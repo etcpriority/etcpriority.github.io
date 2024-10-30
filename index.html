@@ -102,7 +102,7 @@
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
-    <h2 class="title is-3">Abstract</h2>
+    <h2 class="title is-4">Abstract</h2>
     <div class="content has-text-justified">
       <p>
         In multi-agent systems, effective communication between agents is essential for 
@@ -137,246 +137,182 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Overview</h2>
-    <!-- Image to illustrate your method -->
-    <div style="text-align: center; width: 500px;"> 
-      <img src="./static/images/system.png" style="margin: 0 auto;"  alt="Description of the method" />
-    </div>
-    <div class="content has-text-justified">
-    <p>
-      Our method jointly learns control policies and communication priorities using an 
-      independent proximal policy optimization algorithm. A decentralized multi-agent system where each agent \(i\) learns the policy \(\pi(a_i | o_i, \hat{o})\) 
-      based on local observations o_i and communicated observations \hat{o}. 
-      Agent i exchanges the communication priority a_{i,\mathrm{p}} through a wireless network. 
-      Moreover, L agents with the highest priorities are allocated bandwidth and send crucial information \hat{o} to other agents. 
-      Agent $i$ executes the control action a_{i,\mathrm{c}} to interact with the environment, getting corresponding rewards and local observations, 
-      which feed back into the policy learning.
-      </p>
+    <h2 class="title is-4">Overview</h2>
+    <!-- Flex container for centering the image -->
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+      <!-- Image to illustrate your method -->
+      <div style="text-align: center; width: 500px;"> 
+        <img src="./static/images/system.png" alt="Description of the method" style="max-width: 100%; height: auto;" />
+      </div>
+      <div class="content has-text-justified" style="max-width: 800px;">
+        <p>
+          Our method jointly learns control policies and communication priorities using an 
+          independent proximal policy optimization algorithm. A decentralized multi-agent system where each agent \(i\) learns the policy \(\pi(a_i | o_i, \hat{o})\) 
+          based on local observations \(o_i\) and communicated observations \(\hat{o}\). 
+          Agent \(i\) exchanges the communication priority \(a_{i,\mathrm{p}}\) through a wireless network. 
+          Moreover, \(L\) agents with the highest priorities are allocated bandwidth and send crucial information \(\hat{o}\) to other agents. 
+          Agent \(i\) executes the control action \(a_{i,c}\) to interact with the environment, getting corresponding rewards and local observations, 
+          which feed back into the policy learning.
+        </p>
+      </div>
     </div>
   </div>
 </section>
+
+
 
 
 <section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-left">Evaluation</h2>
-    <div class="content">
+      <div class="container is-max-desktop">
+      <h2 class="title is-4">Coverage Control (Three Agents)</h2>
+      <div class="content has-text-justified">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <video id="spread_p_3_t3e4" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/spread_p_3_t3e4.mp4" type="video/mp4">
+          </video>
+          <p>(a) Ours</p>
+        </div>
+        <div class="column has-text-centered">
+          <video id="spread_r_3_t2e4" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/spread_r_3_t2e4.mp4" type="video/mp4">
+          </video>
+          <p>(b) Round-Robin Communication</p>
+        </div>
+      </div>
       <p>
-        We evaluate our algorithm in multiwalker, coverage control and formation control environments.
-        We use independent proximal policy optimization with round-robin communication as the baseline, e.g,
-        it just needs to learn the control policy.
+        In coverage control, our algorithm enables agents to quickly collaborate and 
+        cover the corresponding landmarks. In the final performance, two agents are nearly 
+        aligned with their respective landmarks, while one 
+        agent has a short distance away from its landmark.
       </p>
       <p>
-        In multiwalker, bipedal robots (walkers) aim to transport a package from the left side 
-        to the right side of the terrain.
+        The policy learned by the baseline lets the agents go to different landmarks at the initial stage, 
+        but in the middle, two of the agents have a conflict over who covers the top landmark 
+        and who covers the left landmark. In the end, none of the three agents can be fully 
+        aligned with landmarks.
       </p>
-      <p>
-        In coverage control, the goal is for agents to position themselves such that each landmark is within a certain distance of at least one agent.
-      </p>
-      <p>
-        In coverage control, the objective is for agents to form an M-sided regular polygon with the landmark at its center.
-      </p>
-    </div>
-    <div class="columns is-centered"></div>
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-4">Our algorithm in multiwalker with three agents</h2>
-          <video id="walker_3_p_t6e2" controls muted loop playsinline height="100%">
-            <source src="./static/videos/walker_3_p_t6e2.mp4"
-                    type="video/mp4">
-          </video>
-          <p>
-            Under limited bandwidth conditions, the agents trained with our algorithm initially adopt a simplified policy, 
-            passing the package to the rightmost agent to minimize complex coordination, which would 
-            otherwise require more communication. The rightmost agent stabilizes the package by 
-            positioning itself at its center of mass, balancing it effectively—even performing 
-            jumps to maintain stability. Eventually, however, the package falls to the ground due 
-            to risky balancing and an unexpected terrain configuration not encountered 
-            in training. Overall, our method enables agents to transport packages over considerable 
-            distances, despite communication constraints.
-          </p>
-        </div>
       </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-4">Baseline in multiwalker with three agents</h2>
-          <video id="walker_3_r_t20e6" controls muted loop playsinline height="100%">
-            <source src="./static/videos/walker_3_r_t20e6.mp4"
-                    type="video/mp4">
-          </video>
-          <p>
-            With the baseline, the agents adopt a similar policy, that is, let as few agents as possible transport the package. However, 
-            around the midpoint, the middle agent approaches the rightmost one, aiming to 
-            transfer the package. Here, a slight misalignment occurs due to the lack of the important information, with the middle agent moving out 
-            of sync with the rightmost agent's reach. This desynchronization leads to the package 
-            slipping, resulting in it falling to the ground.
-          </p>
-        </div>
       </div>
-    </div>
-    <!--/ Matting. -->
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-4">Our algorithm in multiwalker with six agents</h2>
-          <video id="walker_6_p_t21e8" controls muted loop playsinline height="100%">
-            <source src="./static/videos/walker_6_p_t21e8.mp4"
-                    type="video/mp4">
-          </video>
-          <p>
-            When the number of agents increases to six, the policy learned by our algorithm is 
-            to pass the package to the four agents on the right, who then transport it over a 
-            considerable distance. However, because the agents are so close together and lack 
-            sufficient communication, the leftmost agent eventually steps on the second agent 
-            from the left.
-          </p>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-4">Baseline in multiwalker with six agents</h2>
-          <video id="walker_r_6_t4e7" controls muted loop playsinline height="100%">
-            <source src="./static/videos/walker_r_6_t4e7.mp4"
-                    type="video/mp4">
-          </video>
-          <p>
-            With six agents, the policy obtained from the baseline is still to let as few agents as 
-            possible transport the package. However, this approach introduces certain risks: 
-            some middle agents exhibit less effort during transfers and fail to recognize how 
-            their forward movement impacts the overall task. As a result, they end up tripping 
-            other agents, and the package does not travel very far.
-          </p>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-4">Our algorithm coverage conrtol with three agents</h2>
-          <video id="spread_p_3_t3e4" controls muted loop playsinline height="100%">
-            <source src="./static/videos/spread_p_3_t3e4.mp4"
-                    type="video/mp4">
-          </video>
-          <p>
-            In coverage conrtol, our algorithm enables agents to quickly collaborate and 
-            cover the corresponding landmarks. In the final performance, two agents are nearly 
-            aligned with their respective landmarks, while one 
-            agent has a short distance away from its landmark.
-          </p>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-4">Baseline in coverage conrtol with three agents</h2>
-          <video id="spread_r_3_t2e4" controls muted loop playsinline height="100%">
-            <source src="./static/videos/spread_r_3_t2e4.mp4"
-                    type="video/mp4">
-          </video>
-          <p>
-            The policy learned by the baseline lets the agents go to different landmarks at the initial stage, 
-            but in the middle, two of the agents have a conflict over who covers the top landmark 
-            and who covers the left landmark. In the end, none of the three agents can be fully 
-            aligned with landmarks.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-4">Our algorithm in formation conrtol with eight agents</h2>
-          <video id="render_for_8_p (2)" controls muted loop playsinline height="100%">
-            <source src="./static/videos/render_for_8_p (2).mp4"
-                    type="video/mp4">
-          </video>
-          <p>
-            In formation control, following the policy from our algorithm, the agents coordinate 
-            and eventually surround the landmark, forming an approximate regular polygon.
-          </p>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-4">Baseline in formation conrtol with eight agents</h2>
-          <video id="render_for_8_r" controls muted loop playsinline height="100%">
-            <source src="./static/videos/render_for_8_r.mp4"
-                    type="video/mp4">
-          </video>
-          <p>
-            The policy from the baseline fails to allow the agents to be distributed in an 
-            desired manner around the landmark. Some agents place themselves in appropriate 
-            locations, while the remaining agents do not reach the corresponding locations.
-          </p>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Concurrent Work. -->
-    <!-- <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div>
-    </div> -->
-    <!--/ Concurrent Work. -->
-
-  </div>
 </section>
+    
+<section class="section"> 
+  <div class="container is-max-desktop">
+      <h2 class="title is-4">Formation Control (Eight Agents)</h2>
+      <div class="content has-text-justified">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <video id="render_for_8_p (2)" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/render_for_8_p (2).mp4" type="video/mp4">
+          </video>
+          <p>(a) Ours</p>
+        </div>
+        <div class="column has-text-centered">
+          <video id="render_for_8_r" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/render_for_8_r.mp4" type="video/mp4">
+          </video>
+          <p>(b) Round-Robin Communication</p>
+        </div>
+      </div>
+      <p>
+        In formation control, following the policy from our algorithm, the agents coordinate 
+        and eventually surround the landmark, forming an approximate regular polygon.
+      </p>
+      <p>
+        The policy from the baseline fails to allow the agents to be distributed in a 
+        desired manner around the landmark. Some agents place themselves in appropriate 
+        locations, while the remaining agents do not reach the corresponding locations.
+      </p>
+      </div>
+      </div>
+ </section>
 
 
-<!-- <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}</code></pre>
-  </div>
-</section> -->
 
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-4">Multiwalker</h2>
+        <!-- Flex container for centering the videos in two columns -->
+        <div class="container is-max-desktop">
+          <h2 class="title is-5">Three Agents</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <div class="column has-text-centered">
+                <video id="walker_3_p_t6e2" controls muted loop playsinline width="100%">
+                  <source src="./static/videos/walker_3_p_t6e2.mp4" type="video/mp4">
+                </video>
+                <p>(a) Ours</p>
+              </div>
+              <div class="column has-text-centered">
+                <video id="walker_3_r_t20e6" controls muted loop playsinline width="100%">
+                  <source src="./static/videos/walker_3_r_t20e6.mp4" type="video/mp4">
+                </video>
+                <p>(b) Round-Robin Communication</p>
+              </div>
+            </div>
+            <p>
+              Under limited bandwidth conditions, the agents trained with our algorithm initially adopt a simplified policy, 
+              passing the package to the rightmost agent to minimize complex coordination, which would 
+              otherwise require more communication. The rightmost agent stabilizes the package by 
+              positioning itself at its center of mass, balancing it effectively—even performing 
+              jumps to maintain stability. Eventually, however, the package falls to the ground due 
+              to risky balancing and an unexpected terrain configuration not encountered 
+              in training. Overall, our method enables agents to transport packages over considerable 
+              distances, despite communication constraints.
+            </p>
+            <p>
+              With the baseline, the agents adopt a similar policy, that is, let as few agents as possible transport the package. However, 
+              around the midpoint, the middle agent approaches the rightmost one, aiming to 
+              transfer the package. Here, a slight misalignment occurs due to the lack of the important information, with the middle agent moving out 
+              of sync with the rightmost agent's reach. This desynchronization leads to the package 
+              slipping, resulting in it falling to the ground.
+            </p>
+          </div>
+        </div>
+        
+  
+    
+        <div class="container is-max-desktop">
+          <h2 class="title is-5">Six Agents</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <div class="column has-text-centered">
+                <video id="walker_6_p_t21e8" controls muted loop playsinline width="100%">
+                  <source src="./static/videos/walker_6_p_t21e8.mp4" type="video/mp4">
+                </video>
+                <p>(a) Ours</p>
+              </div>
+              <div class="column has-text-centered">
+                <video id="walker_r_6_t4e7" controls muted loop playsinline width="100%">
+                  <source src="./static/videos/walker_r_6_t4e7.mp4" type="video/mp4">
+                </video>
+                <p>(b) Round-Robin Communication</p>
+              </div>
+            </div>
+            <p>
+              When the number of agents increases to six, the policy learned by our algorithm is 
+              to pass the package to the four agents on the right, who then transport it over a 
+              considerable distance. However, because the agents are so close together and lack 
+              sufficient communication, the leftmost agent eventually steps on the second agent 
+              from the left.
+            </p>
+            <p>
+              With six agents, the policy obtained from the baseline is still to let as few agents as 
+              possible transport the package. However, this approach introduces certain risks: 
+              some middle agents exhibit less effort during transfers and fail to recognize how 
+              their forward movement impacts the overall task. As a result, they end up tripping 
+              other agents, and the package does not travel very far.
+            </p>
+          </div>
+        </div>
+        
+        
+      
+      </div>
+    </section>
+    
+    
+    
 
 <footer class="footer">
   <div class="container">
