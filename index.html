@@ -104,25 +104,7 @@
     <h2 class="title is-4">Abstract</h2>
     <div class="content has-text-justified">
       <p>
-        In multi-agent systems, effective communication between agents is essential for 
-        coordination and control, yet communication resources are often limited, posing 
-        challenges to maintaining system performance. Event-triggered control offers a 
-        solution by initiating communication only when necessary, thus reducing unnecessary 
-        data transmission.
-      </p>
-      <p>  
-        However, current multi-agent reinforcement learning algorithms 
-        for event-triggered control face two significant limitations. First, they rely on 
-        the centralized training and decentralized execution paradigm, which requires global 
-        information from periodic communication during training---a requirement that can often 
-        not be met in real-world applications. Second, these methods consider discrete, 
-        binary communication decisions. This adds complexity to the learning process as 
-        the action space is now hybrid: continuous control commands and discrete communication 
-        decisions. Further, binary communication decisions may still result in more agents 
-        communicating than the network bandwidth can support. 
-      </p>
-      <p> 
-        In this paper, we propose a priority-driven control and communication framework that operates fully decentralized, relying only on local observations and exchanged information during both training and execution. Our method simplifies the hybrid action space by enabling agents to jointly learn continuous control policies and communication priorities. We validate our method across various multi-agent benchmarks with communication interference, demonstrating its superiority over the baseline approach.
+Event-triggered control provides a mechanism for avoiding excessive use of constrained communication bandwidth in networked multi-agent systems. However, most existing methods rely on accurate system models, which may be unavailable in practice. In this work, we propose a model-free, priority-driven reinforcement learning algorithm that learns communication priorities and control policies jointly from data in decentralized multi-agent systems. By learning communication priorities, we circumvent the hybrid action space typical in event-triggered control with binary communication decisions. We evaluate our algorithm on benchmark tasks and demonstrate that it outperforms the baseline method.
       </p>
     </div>
   </div>
@@ -269,6 +251,9 @@
               transfer the package. Here, a slight misalignment occurs due to the lack of the important information, with the middle agent moving out 
               of sync with the rightmost agent's reach. This desynchronization leads to the package 
               slipping, resulting in it falling to the ground.
+            </p>
+            <p>
+              Agents trained with MAPPOC rely mainly on the middle and rightmost agents for package transport. However, their transport speed is much lower than that achieved by our method, and the rightmost agent eventually loses balance and falls while attempting to stabilize the package. Notably, MAPPOC achieves only about 55% communication savings, whereas our method reduces communication usage by approximately 67%.
             </p>
           </div>
     
